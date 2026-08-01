@@ -19,7 +19,7 @@ dotenv.config()
 
 const app = express();
 const port = process.env.PORT;
-const hostname = process.env.HOSTNAME;
+// const hostname = process.env.HOSTNAME;
 const mongo_db = process.env.MONGO_DB;
 const USER = "user";
 const ADMIN = "admin";
@@ -549,7 +549,7 @@ app.all("/*split", (req, res) => {
 
 
 
-app.listen(port,hostname,()=>{
+app.listen(port,()=>{
     console.log(`connected server -> http://${hostname}:${port}`)
 })
 
