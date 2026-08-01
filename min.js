@@ -11,6 +11,7 @@ import { fileURLToPath } from "url";
 import multer from "multer";
 import { fileTypeFromFile } from "file-type";
 import fs from "fs"
+import cors from "cors"
 
 
 
@@ -19,7 +20,7 @@ dotenv.config()
 const app = express();
 const port = process.env.PORT;
 const hostname = process.env.HOSTNAME;
-const mongo_db = process.env.MONGO_DB
+const mongo_db = process.env.MONGO_DB;
 const USER = "user";
 const ADMIN = "admin";
 const MANAGER = "manager";
@@ -168,7 +169,7 @@ mongoose.connect(mongo_db)
 app.use(express.json())
 app.use("/api/users",routes)
 app.use("/uploads",express.static(path.join(__dirname,"uploads")))
-
+app.use(cors())
 
 routes.post("/upload-avatar/:id",verifyJWT, allowOwnerOrAdmin, upload.single("avatar"), asyncWrapper(async(req,res)=>{    
     const typeFile = await fileTypeFromFile(req.file.path);
