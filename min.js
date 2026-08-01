@@ -550,7 +550,7 @@ app.all("/*split", (req, res) => {
 
 
 app.listen(port,()=>{
-    console.log(`connected server -> http://${hostname}:${port}`)
+    console.log(`connected server -> http://localhost:${port}`)
 })
 
 
